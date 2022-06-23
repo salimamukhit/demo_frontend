@@ -1,0 +1,30 @@
+.navbar {
+    background-color: rgb(185, 209, 231);
+    border-right-width: 2px;
+    border-right-color:rgb(221, 235, 236);
+    position: fixed;
+    overflow-x: hidden;
+    width: 300px;
+}
+
+.nav-item {
+    margin: 20px;
+    cursor: pointer;
+}
+
+.nav-header {
+    color:rgb(227, 236, 241);
+    font-weight: bold;
+    background-color: rgb(81, 141, 180);
+    padding: 20px;
+}
+
+.nav-item:hover {
+    color: white;
+}
+
+.logout {
+    position: absolute;
+    bottom: 5px;
+}
+
