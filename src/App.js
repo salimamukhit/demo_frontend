@@ -9,7 +9,9 @@ import React from 'react';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {currentView: 'home'};
+    this.state = JSON.parse(window.localStorage.getItem('state')) || {
+      currentView: 'home'
+    };
   }
   navBarItems = [
     {
@@ -38,10 +40,13 @@ class App extends React.Component {
     }
   ];
 
+  setState(state) {
+    window.localStorage.setItem('state', JSON.stringify(state));
+    super.setState(state)
+  }
+
   navigate(view) {
-    this.setState({
-      currentView: view
-    });
+    this.setState({...this.state, currentView: view});
   }
 
   renderView(view) {
