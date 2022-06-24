@@ -3,3 +3,8 @@
   margin-right: 8px;
   margin-bottom: 4px;
 }
+
+.content-container {
+  position: fixed;
+  left: 340px;
+}

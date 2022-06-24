@@ -1,8 +1,8 @@
 import './App.css';
-import NavBar from './NavBar';
-import HomeView from './HomeView';
-import ManageView from './ManageView';
-import SettingsView from './SettingsView';
+import NavBar from './navbar/NavBar';
+import HomeView from './views/home/HomeView';
+import ManageView from './views/manage/ManageView';
+import SettingsView from './views/settings/SettingsView';
 import { FaHome, FaPencilAlt, FaRegSun, FaAngleLeft } from 'react-icons/fa';
 import React from 'react';
 
@@ -16,9 +16,7 @@ class App extends React.Component {
       label: 'Home',
       icon: <FaHome className='nav-icon'/>,
       click: () => {
-        this.setState({
-          currentView: 'home'
-        });
+        this.navigate('home');
       },
       view: 'home-view'
     },
@@ -26,9 +24,7 @@ class App extends React.Component {
       label: 'Manage',
       icon: <FaPencilAlt className='nav-icon' />,
       click: () => {
-        this.setState({
-          currentView: 'manage'
-        });
+        this.navigate('manage')
       },
       view: 'manage-view'
     },
@@ -36,13 +32,17 @@ class App extends React.Component {
       label: 'Settings',
       icon: <FaRegSun className='nav-icon' />,
       click: () => {
-        this.setState({
-          currentView: 'settings'
-        });
+        this.navigate('settings');
       },
       view: 'settings-view'
     }
   ];
+
+  navigate(view) {
+    this.setState({
+      currentView: view
+    });
+  }
 
   renderView(view) {
     switch (view) {
@@ -52,21 +52,15 @@ class App extends React.Component {
         )
       case 'home':
         return (
-          <div>
             <HomeView />
-          </div>
         )
       case 'manage':
         return (
-          <div>
             <ManageView />
-          </div>
         )
       case 'settings':
         return (
-          <div>
             <SettingsView />
-          </div>
         )
     }
   }
@@ -80,7 +74,7 @@ class App extends React.Component {
             logoutIcon={<FaAngleLeft className='nav-icon' />}
           />
         </div>
-        <div className='col-span-3' style={{position: 'fixed', left: 340}}>
+        <div className='col-span-3 content-container'>
           {this.renderView(this.state.currentView)}
         </div>
       </div>
